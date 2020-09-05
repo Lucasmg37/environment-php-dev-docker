@@ -2,7 +2,6 @@ version: '3.3'
 services:
     php:
         image: php:7.1-apache
-        container_name: php7-1
         volumes:
             - ./webserverdata:/var/www/html/
             - ./sites-available:/etc/apache2/sites-available/
@@ -13,7 +12,6 @@ services:
         build: .
     db:
         image: mysql:5.6
-        container_name: msqly10
         environment:
             MYSQL_ROOT_PASSWORD: root
         networks:

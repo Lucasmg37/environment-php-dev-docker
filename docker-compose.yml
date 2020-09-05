@@ -1,0 +1,62 @@
+version: '3.3'
+services:
+    php:
+        image: php:7.1-apache
+        container_name: php7-1
+        volumes:
+            - ./webserverdata:/var/www/html/
+            - ./sites-available:/etc/apache2/sites-available/
+        ports:
+            - 8000:80
+        networks:
+            - dev
+        build: .
+    db:
+        image: mysql:5.6
+        container_name: msqly10
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        networks:
+            - dev
+        volumes:
+            - ./bddataa:/var/lib/mysql
+            - ./backupdb:/docker-entrypoint-initdb.d
+        ports:
+            - 3306:3306
+    myadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        networks:
+            - dev
+        ports:
+        -    4001:80
+        environment:
+            - PMA_ARBITRARY=1
+
+    composer:
+        image: prooph/composer:7.2
+        volumes:
+            - ./youtubedownloader:/app
+        working_dir: /app
+        command: install
+
+    yt-convert-service:
+        environment:
+            - API_KEY=Insert your API key here from google
+        build: .
+        networks:
+            - dev
+        volumes:
+            - ./youtubedownloader:/var/www/html
+        ports:
+            - '4003:80'
+
+networks:
+    dev:
+        driver: bridge
+
+volumes:
+    phpdata:
+    bddataa:
+    backupdb:
+    youtubedownloader:
+    sites-available:

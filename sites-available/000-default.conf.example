@@ -1,0 +1,24 @@
+<VirtualHost *:80>
+    DocumentRoot /var/www/html/
+    ServerName localhost
+
+   <Directory /var/www/html/>
+        Options -Indexes
+        AllowOverride all
+        Order allow,deny 
+        Allow from all 
+        Require all granted
+   </Directory>
+
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot /var/www/html/projects/pathindex
+    ServerName subdomain1.localhost
+</VirtualHost>
+
+<VirtualHost *:80>
+    DocumentRoot /var/www/html/projects/pathindex
+    ServerName subdomain2.localhost
+</VirtualHost>
+

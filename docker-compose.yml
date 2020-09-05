@@ -17,10 +17,10 @@ services:
         networks:
             - dev
         volumes:
-            - ./bddataa:/var/lib/mysql
-            - ./backupdb:/docker-entrypoint-initdb.d
+            - ./bddata:/var/lib/mysql
+            - ./bdimport:/docker-entrypoint-initdb.d
         ports:
-            - 3306:3306
+            - 4000:3306
     myadmin:
         image: phpmyadmin/phpmyadmin:latest
         networks:
@@ -54,7 +54,7 @@ networks:
 
 volumes:
     phpdata:
-    bddataa:
-    backupdb:
+    bddata:
+    bdimport:
     youtubedownloader:
     sites-available:

@@ -1,4 +1,12 @@
+# Apache configuration
 /sites-available/000-default.conf
-/webserverdata
+
+# Files in var/html apache
+/webserverdata/projects/*
+!/webserverdata/projects/index.php
 /youtubedownloader
-/bddataa
+
+# Data base volumes
+/bddata
+/bdimport/*
+!/bdimport/baseToImport.sql

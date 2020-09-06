@@ -65,7 +65,7 @@ Suba novamente o contêiner porém com o seguinte comando
 composer:
     image: prooph/composer:7.2
     volumes:
-        - ./webserversdata/projects/nomeprojeto:/nomeprojeto
+        - ./webserverdata/projects/pasta_do_projeto:/nomeprojeto
     working_dir: /nomeprojeto
     command: install
 ```

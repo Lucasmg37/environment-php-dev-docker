@@ -37,6 +37,13 @@ services:
         working_dir: /app
         command: install
 
+    composer:
+        image: prooph/composer:7.2
+        volumes:
+            - ./webserverdata/projects/playlistShare/backend:/playlistShare
+        working_dir: /playlistShare
+        command: install
+
     yt-convert-service:
         environment:
             - API_KEY=Insert your API key here from google
@@ -58,3 +65,4 @@ volumes:
     bdimport:
     youtubedownloader:
     sites-available:
+    webserverdata:

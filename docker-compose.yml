@@ -1,7 +1,7 @@
 version: '3.3'
 services:
     php:
-        image: php:7.1-apache
+        image: php:7.4-apache
         volumes:
             - ./webserverdata:/var/www/html/
             - ./sites-available:/etc/apache2/sites-available/
@@ -33,13 +33,6 @@ services:
     composer:
         image: prooph/composer:7.2
         volumes:
-            - ./youtubedownloader:/app
-        working_dir: /app
-        command: install
-
-    composer:
-        image: prooph/composer:7.2
-        volumes:
             - ./webserverdata/projects/playlistShare/backend:/playlistShare
         working_dir: /playlistShare
         command: install
@@ -54,6 +47,13 @@ services:
             - ./youtubedownloader:/var/www/html
         ports:
             - '4003:80'
+
+    composer:
+        image: prooph/composer:7.2
+        volumes:
+            - ./youtubedownloader:/yt
+        working_dir: /yt/
+        command: install
 
 networks:
     dev:
